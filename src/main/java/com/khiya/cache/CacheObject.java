@@ -2,18 +2,20 @@ package com.khiya.cache;
 
 public class CacheObject {
 
-	private Object object;
+	private final Object object;
+	private final String name;
 
-	public CacheObject(Object value) {
-		this.object = value;
+	public CacheObject(String name, Object object) {
+		this.name = name;
+		this.object = object;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public Object getObject() {
 		return object;
-	}
-
-	public void setObject(Object object) {
-		this.object = object;
 	}
 
 }
