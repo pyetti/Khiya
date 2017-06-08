@@ -5,36 +5,36 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.khiya.cache.container.CacheContainer;
+import com.khiya.cache.Cache;
 
-public class IntegrationTest {
+public class CacheIT {
 
 	@Test
 	public void testCache() {
 		RandoObject rando = new RandoObject("RandoThing", 1);
 
-		CacheContainer.cacheObject("rando", rando);
-		RandoObject returnedToMe = CacheContainer.getObject("rando", RandoObject.class);
+		Cache.store("rando", rando);
+		RandoObject returnedToMe = Cache.get("rando", RandoObject.class);
 		assertNotNull(returnedToMe);
 		assertEquals("RandoThing", returnedToMe.getThing());
 		assertEquals(1, returnedToMe.getOtherThing());
 
 		RandoObject rando2 = new RandoObject("RandoThing2", 2);
 
-		CacheContainer.cacheObject("rando2", rando2);
-		RandoObject returnedToMe2 = CacheContainer.getObject("rando2", RandoObject.class);
+		Cache.store("rando2", rando2);
+		RandoObject returnedToMe2 = Cache.get("rando2", RandoObject.class);
 		assertNotNull(returnedToMe2);
 		assertEquals("RandoThing2", returnedToMe2.getThing());
 		assertEquals(2, returnedToMe2.getOtherThing());
 
-		CacheContainer.cacheObject("rando", rando);
-		returnedToMe = CacheContainer.getObject("rando", RandoObject.class);
+		Cache.store("rando", rando);
+		returnedToMe = Cache.get("rando", RandoObject.class);
 		assertNotNull(returnedToMe);
 		assertEquals("RandoThing", returnedToMe.getThing());
 		assertEquals(1, returnedToMe.getOtherThing());
 
-		CacheContainer.cacheObject("rando2", rando2);
-		returnedToMe2 = CacheContainer.getObject("rando2", RandoObject.class);
+		Cache.store("rando2", rando2);
+		returnedToMe2 = Cache.get("rando2", RandoObject.class);
 		assertNotNull(returnedToMe2);
 		assertEquals("RandoThing2", returnedToMe2.getThing());
 		assertEquals(2, returnedToMe2.getOtherThing());
