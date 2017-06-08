@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-Built-By: peteryetti
-Class-Path: lib/log4j-1.2.17.jar lib/junit-4.7.jar
-Build-Jdk: 1.8.0_60
-Created-By: Maven Integration for Eclipse
-
