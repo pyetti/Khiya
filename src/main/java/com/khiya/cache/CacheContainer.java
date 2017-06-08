@@ -6,11 +6,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import com.khiya.cache.prune.CachePruner;
+import com.khiya.cache.prune.Pruner;
 
 public class CacheContainer implements Cache {
 
 	private static Cache cache;
-	private CachePruner cachePruner;
+	private Pruner cachePruner;
 	private static final Map<String, CacheObject> cacheContainer = new ConcurrentHashMap<String, CacheObject>(11);
 
 	private CacheContainer() {

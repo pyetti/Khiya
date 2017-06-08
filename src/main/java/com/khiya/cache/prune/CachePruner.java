@@ -33,8 +33,6 @@ public class CachePruner extends TimerTask implements Pruner {
 
 	private boolean startTask(long delay, long period) {
 		if (period > 1000) {
-			timer.cancel();
-			this.timer.purge();
 			this.timer.schedule(this, delay, period);
 			return true;
 		}
@@ -42,8 +40,6 @@ public class CachePruner extends TimerTask implements Pruner {
 	}
 
 	private boolean startTask(long delay, TimeUnit delayUnit, long period, TimeUnit periodUnit) {
-		this.timer.cancel();
-		this.timer.purge();
 		this.timer.schedule(this, delayUnit.toMillis(delay), periodUnit.toMillis(period));
 		return true;
 	}
@@ -53,16 +49,14 @@ public class CachePruner extends TimerTask implements Pruner {
 		executor.execute(cachePruningRunner);
 	}
 
-	public Timer getTimer() {
-		return timer;
-	}
-
+	@Override
 	public boolean isRunning() {
 		return isRunning;
 	}
 
 	@Override
 	public void finalize() {
+		timer.cancel();
 		executor.shutdown(); // Disable new tasks from being submitted
 		try {
 			// Wait a while for existing tasks to terminate

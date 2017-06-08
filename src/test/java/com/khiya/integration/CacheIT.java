@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import com.khiya.cache.CacheContainer;
+import com.khiya.testutils.RandoObject;
 
 public class CacheIT {
 
@@ -38,33 +39,6 @@ public class CacheIT {
 		assertNotNull(returnedToMe2);
 		assertEquals("RandoThing2", returnedToMe2.getThing());
 		assertEquals(2, returnedToMe2.getOtherThing());
-	}
-
-}
-
-class RandoObject {
-	private String thing;
-	private int otherThing;
-
-	public RandoObject(String thing, int otherThing) {
-		this.thing = thing;
-		this.otherThing = otherThing;
-	}
-
-	public String getThing() {
-		return thing;
-	}
-
-	public void setThing(String thing) {
-		this.thing = thing;
-	}
-
-	public int getOtherThing() {
-		return otherThing;
-	}
-
-	public void setOtherThing(int otherThing) {
-		this.otherThing = otherThing;
 	}
 
 }

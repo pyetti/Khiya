@@ -4,4 +4,6 @@ public interface Pruner {
 
 	public void prune();
 
+	boolean isRunning();
+
 }
